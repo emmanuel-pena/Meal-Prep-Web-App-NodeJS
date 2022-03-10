@@ -1,0 +1,147 @@
+{
+  "title": "Chicken Satay",
+  "id": 638308,
+  "image": "https://spoonacular.com/recipeImages/638308-556x370.jpg",
+  "servings": 4,
+  "readyInMinutes": 45,
+  "sourceUrl": "http://www.foodista.com/recipe/3SCSTC5Y/chicken-satay-by-bing",
+  "nutrients": [
+      {
+          "name": "Calories",
+          "amount": 684.76,
+          "unit": "kcal",
+          "percentOfDailyNeeds": 34.24
+      },
+      {
+          "name": "Fat",
+          "amount": 55.31,
+          "unit": "g",
+          "percentOfDailyNeeds": 85.1
+      },
+      {
+          "name": "Saturated Fat",
+          "amount": 27.63,
+          "unit": "g",
+          "percentOfDailyNeeds": 172.69
+      },
+      {
+          "name": "Carbohydrates",
+          "amount": 18.34,
+          "unit": "g",
+          "percentOfDailyNeeds": 6.11
+      },
+      {
+          "name": "Sugar",
+          "amount": 7.08,
+          "unit": "g",
+          "percentOfDailyNeeds": 7.86
+      },
+      {
+          "name": "Sodium",
+          "amount": 1169.86,
+          "unit": "mg",
+          "percentOfDailyNeeds": 50.86
+      },
+      {
+          "name": "Protein",
+          "amount": 32.79,
+          "unit": "g",
+          "percentOfDailyNeeds": 65.59
+      },
+      {
+          "name": "Fiber",
+          "amount": 4.39,
+          "unit": "g",
+          "percentOfDailyNeeds": 17.55
+      }
+  ],
+  "ingredients": [
+      {
+          "name": "chicken meat",
+          "amount": 500,
+          "unit": "grams"
+      },
+      {
+          "name": "chilli powder",
+          "amount": 1,
+          "unit": "teaspoon"
+      },
+      {
+          "name": "coconut cream",
+          "amount": 0.75,
+          "unit": "cup"
+      },
+      {
+          "name": "coconut cream",
+          "amount": 6,
+          "unit": "tablespoons"
+      },
+      {
+          "name": "crunchy peanut butter",
+          "amount": 1,
+          "unit": "tablespoon"
+      },
+      {
+          "name": "ground coriander",
+          "amount": 1,
+          "unit": "tablespoon"
+      },
+      {
+          "name": "ground cumin",
+          "amount": 1.5,
+          "unit": "tablespoons"
+      },
+      {
+          "name": "groundnut",
+          "amount": 0.5,
+          "unit": "cup"
+      },
+      {
+          "name": "peanut satay sauce",
+          "amount": 6,
+          "unit": "tablespoons"
+      },
+      {
+          "name": "salt",
+          "amount": 1,
+          "unit": "teaspoon"
+      },
+      {
+          "name": "soy sauce",
+          "amount": 2,
+          "unit": "teaspoons"
+      },
+      {
+          "name": "sugar",
+          "amount": 1,
+          "unit": "teaspoon"
+      },
+      {
+          "name": "sugar",
+          "amount": 2,
+          "unit": "teaspoons"
+      },
+      {
+          "name": "turmeric powder",
+          "amount": 2,
+          "unit": "teaspoons"
+      },
+      {
+          "name": "vegetable oil",
+          "amount": 0.25,
+          "unit": "cup"
+      },
+      {
+          "name": "water",
+          "amount": 0.25,
+          "unit": "cup"
+      }
+  ],
+  "instructions": [
+    "Preheat the oven to 200 degrees F.",
+  "Whisk together the flour, pecans, granulated sugar, light brown sugar, baking powder, baking soda, and salt in a medium bowl.",
+   "Whisk together the eggs, buttermilk, butter and vanilla extract and vanilla bean in a small bowl.",
+   "Add the egg mixture to the dry mixture and gently mix to combine. Do not overmix.",
+   "Let the batter sit at room temperature for at least 15 minutes and up to 30 minutes before using."
+]
+}

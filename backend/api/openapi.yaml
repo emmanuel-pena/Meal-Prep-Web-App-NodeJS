@@ -1,0 +1,730 @@
+openapi: '3.0.3'
+
+info:
+  description: RecipePrep Backend
+  version: 0.1.0
+  title: RecipePrep Backend
+
+servers:
+  - url: http://localhost:3010/v0
+
+paths:
+  /user:
+    post:
+      description: Creates a new user
+      requestBody:
+        description: User to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewUser'
+      responses:
+        201:
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Submitted User has unexpected properties
+        409:
+          description: Conflict. User with email or user-name already exists
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /favoriterecipe:
+    post:
+      description: Adds recipe to our favorite_recipes table and recipe table
+      security:
+      - bearerAuth: [] 
+      requestBody:
+        description: info of stuff being added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqFormatAddFavRecipe'
+      responses:
+        200:
+          description: Saved recipe to tables successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FavRecipesAddition'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        409:
+          description: Recipe is already in user's favorite recipes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorised
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      description: Gets all favorite recipes of member
+      security:
+      - bearerAuth: [] 
+      responses:
+        200:
+          description: Got favorite recipes successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FavRecipesGotten'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      description: Deletes a recipe from the user's favorites
+      security:
+      - bearerAuth: [] 
+      parameters:
+        - name: recipeId
+          in: query
+          description: recipe id of recipe to delete from favorites
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Removed favorite recipe successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FavRecipesDeletion'
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        401:
+          description: Unauthorised
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /grocerylists:
+    post:
+      description: Adds a grocery list to our existing set of grocery lists
+      security:
+      - bearerAuth: [] 
+      requestBody:
+        description: info of stuff being added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqFormatAddGroceryList'
+      responses:
+        200:
+          description: Created grocery list successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListAddition'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      description: Gets all grocery lists of member
+      security:
+      - bearerAuth: [] 
+      responses:
+        200:
+          description: Got all grocery lists successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListsGotten'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      description: Deletes a grocery list from user's existing grocery lists'
+      security:
+      - bearerAuth: [] 
+      parameters:
+        - name: listName
+          in: query
+          description: name of grocery list to delete
+          schema:
+            type: string
+      responses:
+        204:
+          description: Removed list from grocery lists successfully
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /groceryrecipe:
+    post:
+      description: Adds a recipe to a new grocery list and recipe table
+      security:
+      - bearerAuth: [] 
+      requestBody:
+        description: info of stuff being added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqFormatAddToNewGroceryList'
+      responses:
+        200:
+          description: Added recipe to grocery list successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListRecipeAddition'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      description: Gets a grocery list recipe
+      security:
+      - bearerAuth: [] 
+      parameters:
+        - name: groceryListID
+          in: query
+          description: list name of list getting ingridients from
+          schema:
+            type: string
+      responses:
+        200:
+          description: Got info from grocery list successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListAllGotten'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      description: Removes a recipe from grocery list of current user
+      security:
+      - bearerAuth: [] 
+      parameters:
+        - name: groceryListId
+          in: query
+          description: grocery list id of grocery list to remove from
+          schema:
+            type: string
+            format: uuid
+        - name: recipeId
+          in: query
+          description: recipe id of recipe we want to remove from grocery list
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Removed recipe from grocery list successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListRecipeDeletion'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /groceryrecipeexisting:
+    post:
+      description: Adds a recipe to an existing grocery list and recipe table
+      security:
+      - bearerAuth: [] 
+      requestBody:
+        description: info of stuff being added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqFormatAddToExistingGroceryList'
+      responses:
+        200:
+          description: Added recipe to grocery list successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListRecipeAddition'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /calendarrecipe:
+    post:
+      description: Adds a recipe to meal calendar table
+      security:
+      - bearerAuth: [] 
+      requestBody:
+        description: info of stuff being added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReqFormatAddToMealCalendar'
+      responses:
+        200:
+          description: Added recipe to meal calendar successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MealCalendarAddition'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    get:
+      description: Gets meal data of selection on meal calendar
+      security:
+      - bearerAuth: [] 
+      responses:
+        200:
+          description: Got recipe of calendar selection successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MealCalendarGotten'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    delete:
+      description: Removes a meal calendar table entry
+      security:
+      - bearerAuth: [] 
+      parameters:
+        - name: date
+          in: query
+          description: date on meal calendar (provide in format 2022-02-28)
+          schema:
+            type: string
+        - name: recipeId
+          in: query
+          description: recipe id of entry we want to remove from calendar table
+          schema:
+            type: integer
+        - name: mealType
+          in: query
+          description: breakfast or lunch or dinner??
+          schema:
+            type: string
+      responses:
+        200:
+          description: Removed entry from recipe calendar table
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MealCalendarDeletion'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+  /recipesandlistnames:
+    get:
+      description: Gets array of listnames and recipes for the grocery list page
+      security:
+      - bearerAuth: [] 
+      responses:
+        200:
+          description: Got recipes and quantities and listnames and created dates successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroceryListTabInfoGotten'
+        401:
+          description: Unauthorised
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+components:
+  schemas:
+    Error:
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+        - code
+        - message
+
+    NewUser:
+      type: object
+      additionalProperties: false
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+          pattern: '(\w+|\d+)[^\s]+@(\w+|\d+)[^\s]*\.((\w+|\d+)[^\s]*){2,6}'
+        password:
+          type: string
+          minLength: 5
+      required:
+        - username
+        - email
+        - password
+
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        username:
+          type: string
+      required:
+        - email
+        - username
+
+    ReqFormatAddFavRecipe:
+      type: object
+      properties:
+        recipeId:
+          type: integer
+        RecipeObj:
+          $ref: '#/components/schemas/RecipeObj'
+      required:
+        - recipeId
+        - RecipeObj
+
+    FavRecipesAddition:
+      type: object
+      properties:
+        memberId:
+          type: string
+          format: uuid
+        recipeId:
+          type: integer
+
+    FavRecipesGotten:
+      type: array
+      items:
+        $ref: '#/components/schemas/RecipeObj'
+
+    FavRecipesDeletion:
+      type: integer
+
+
+    ReqFormatAddGroceryList:
+      type: object
+      properties:
+        listName:
+          type: string
+      required:
+        - listName
+
+    GroceryListAddition:
+      type: object
+      properties:
+        date:
+          type: string
+        listId:
+          type: string
+          format: uuid
+        listName:
+          type: string
+        memberId:
+          type: string
+          format: uuid
+
+    GroceryListsGotten:
+      type: array
+
+
+    ReqFormatAddToNewGroceryList:
+      type: object
+      properties:
+        groceryListId:
+          type: string
+          format: uuid
+        recipeId:
+          type: integer
+        RecipeObj:
+          $ref: '#/components/schemas/RecipeObj'
+      required:
+        - groceryListId
+        - recipeId
+        - RecipeObj
+
+    ReqFormatAddToExistingGroceryList:
+      type: object
+      properties:
+        listName:
+          type: string
+        recipeId:
+          type: integer
+        RecipeObj:
+          $ref: '#/components/schemas/RecipeObj'
+      required:
+        - listName
+        - recipeId
+        - RecipeObj
+
+    GroceryListRecipeAddition:
+      type: object
+      properties:
+        groceryListId:
+          type: string
+          format: uuid
+        recipeId:
+          type: integer
+
+    GroceryListAllGotten:
+      type: array
+      items:
+        allOf:
+          - $ref: '#/components/schemas/RecipeObj'
+          - type: object
+            properties:
+              quantity:
+                type: integer
+              list_name:
+                type: string
+
+    GroceryListRecipeDeletion:
+      type: integer
+
+
+    ReqFormatAddToMealCalendar:
+      type: object
+      properties:
+        mealType:
+          type: string
+        recipeId:
+          type: integer
+        RecipeObj:
+          $ref: '#/components/schemas/RecipeObj'
+        date:
+          type: string
+      required:
+        - mealType
+        - recipeId
+        - RecipeObj
+        - date
+
+    MealCalendarAddition:
+      type: object
+      properties:
+        recipeId:
+          type: integer
+        memberId:
+          type: string
+          format: uuid
+
+
+    MealCalendarGotten:
+      type: array    
+
+    MealCalendarDeletion:
+      type: integer
+
+    GroceryListTabInfoGotten:
+      type: array
+
+
+    RecipeObj:
+      type: object
+      properties:
+        id:
+          type: integer
+        image:
+          type: string
+        servings:
+          type: integer
+        readyInMinutes:
+          type: integer
+        sourceUrl:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              amount:
+                type: number
+              unit:
+                type: string
+        nutrients:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              amount:
+                type: number
+              unit:
+                type: string
+
+
+            
+
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+

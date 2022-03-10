@@ -1,0 +1,116 @@
+{
+  "newusers1" :[{
+    "email": "rroseburgh0@tripadvisor.com",
+    "password": "SJAtjpA",
+    "username": "dcheel0"
+  }, {
+    "email": "ldosdale1@squarespace.com",
+    "password": "ROp8puRZRv7Z",
+    "username": "mhaitlie1"
+  }, {
+    "email": "nakester2@issuu.com",
+    "password": "nlBkO6",
+    "username": "sventuroli2"
+  }, {
+    "email": "cankrett3@forbes.com",
+    "password": "wgfQq2",
+    "username": "kstambridge3"
+  }, {
+    "email": "bcobbold4@gravatar.com",
+    "password": "m5jJFfE",
+    "username": "vhedon4"
+  }, {
+    "email": "amaytom5@un.org",
+    "password": "xxdtQKAqEpyx",
+    "username": "lgallone5"
+  }],
+  "newusers2": [{
+    "email": "crate0@hatena.ne.jp",
+    "username": "gchristopher0",
+    "password": "nVgDo7"
+  }, {
+    "email": "tmcgilmartin1@ezinearticles.com",
+    "username": "wlemery1",
+    "password": "kBuJeVnf4OCB"
+  }, {
+    "email": "cnockles2@latimes.com",
+    "username": "lnoury2",
+    "password": "GIKVpoKAoCU"
+  }, {
+    "email": "hwhybrow3@photobucket.com",
+    "username": "anutten3",
+    "password": "Ko0jhkXaNL"
+  }, {
+    "email": "ramaya4@jigsy.com",
+    "username": "afonte4",
+    "password": "HMsNdxf"
+  }, {
+    "email": "cfarnaby5@fc2.com",
+    "username": "pcattenach5",
+    "password": "KWJCRF8eSL"
+  }],
+  "activeUsers": [{
+    "email": "bgallanders0@youtube.com",
+    "username": "bman123",
+    "password": "password1"
+  },
+  {
+    "email": "rmeecher1@godaddy.com",
+    "username": "the_meecher",
+    "password": "password2"
+  },
+  {
+    "email": "ksteffan2@oakley.com",
+    "username": "steff808",
+    "password": "password3"
+  }],
+  "inactiveUsers": [{
+    "email": "adreger5@yolasite.com",
+    "username": "rando1",
+    "password": "password6"
+  },
+  {
+    "email": "mfilov6@hao123.com",
+    "username": "mlover",
+    "password": "password7"
+  },
+  {
+    "email": "pswateridge7@washingtonpost.com",
+    "username": "watergirl",
+    "password": "password8"
+  }],
+  "verificationUsers":[{
+    "email": "astickins0@friendfeed.com",
+    "username": "ccudiff0",
+    "password": "password1",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFzdGlja2luczBAZnJpZW5kZmVlZC5jb20iLCJpYXQiOjE2NDUwNDYzMTN9.EHwoIc02yNAafl9JAL4KpFVTyCZKWv0mF6GzYPDLkG8"
+  }, {
+    "email": "bchristoffels1@desdev.cn",
+    "username": "hwales1",
+    "password": "password1",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJjaHJpc3RvZmZlbHMxQGRlc2Rldi5jbiIsImlhdCI6MTY0NTA0NjM2MX0.doGQxfgu5U9ep6Q48FKE9zAQPtYakMsD1yRweRxQuPo"
+  }, {
+    "email": "krockhall2@e-recht24.de",
+    "username": "hduley2",
+    "password": "password1",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imtyb2NraGFsbDJAZS1yZWNodDI0LmRlIiwiaWF0IjoxNjQ1MDQ2Mzg3fQ.P0WbdfRp_VdXjn4Bpy_RV5Org5GowtnWJBMy8pouIIM"
+
+  }],
+  "passwordResetUsers" :[{
+    "email": "bdrayn3@livejournal.com",
+  "username": "cbroadstock3",
+  "password": "password1",
+  "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYSQxMSRHZ0tTcDFSYVdzdGh3bXBZaG9LbVFlR3FSeVZVc3R3Qi5na2h5Qk4yLnFJcVJGRFlDMm5GRyIsImVtYWlsIjoiYmRyYXluM0BsaXZlam91cm5hbC5jb20iLCJpYXQiOjE2NDUwNDI4OTl9.NPresCN0plFW9X7ARPYDB8bg8c9CbV5zNr5IAumC92g"
+}, {
+  "email": "bkyles4@skype.com",
+  "username": "hleither4",
+  "password": "password1",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYSQxMSRHZ0tTcDFSYVdzdGh3bXBZaG9LbVFlR3FSeVZVc3R3Qi5na2h5Qk4yLnFJcVJGRFlDMm5GRyIsImVtYWlsIjoiYmt5bGVzNEBza3lwZS5jb20iLCJpYXQiOjE2NDUwNDI5Mzd9.XNMz6K1TDRo9vuogjuJ2TvhBYveRnjAWe8uJOD5itBs"
+}, {
+  "id": "kharbertson5",
+  "email": "nstledger5@deliciousdays.com",
+  "username": "tferrolli5",
+  "password": "password1",
+  "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYSQxMSRHZ0tTcDFSYVdzdGh3bXBZaG9LbVFlR3FSeVZVc3R3Qi5na2h5Qk4yLnFJcVJGRFlDMm5GRyIsImVtYWlsIjoibnN0bGVkZ2VyNUBkZWxpY2lvdXNkYXlzLmNvbSIsImlhdCI6MTY0NTA0Mjk2NX0.sYYnBePnVIQ_UCao95x5uWTRl61uk-OYBOmocRte4KU"
+  }]
+}
