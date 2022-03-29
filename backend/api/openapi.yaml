@@ -674,7 +674,17 @@ components:
 
 
     MealCalendarGotten:
-      type: array    
+      type: array
+      items:
+        type: object
+        properties:
+          recipe:
+            $ref: '#/components/schemas/RecipeObj'
+          title:
+            type: string
+          plannedDate:
+            type: string
+        
 
     MealCalendarDeletion:
       type: integer

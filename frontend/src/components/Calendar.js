@@ -50,14 +50,34 @@ const CalendarComp = () => {
             const array = [];
 
             for (let i = 0; i < temp.length; i++) {
-              item.title = temp[i].title;
-              item.allDay = false;
-              item.start = new Date(temp[i].start + 'T00:00:00');
-              item.end = new Date(temp[i].end + 'T00:00:00');
-              item.recipe = temp[i].recipe;
+              if (temp[i].meal == 'Breakfast') {
+                item.title = temp[i].title;
+                item.allDay = false;
+                item.start = new Date(temp[i].planned + 'T07:00:00');
+                item.end = new Date(temp[i].planned + 'T12:00:00');
+                item.recipe = temp[i].recipe;
 
-              const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
-              array.push(copy);
+                const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
+                array.push(copy);
+              } else if (temp[i].meal == 'Lunch') {
+                item.title = temp[i].title;
+                item.allDay = false;
+                item.start = new Date(temp[i].planned + 'T12:00:00');
+                item.end = new Date(temp[i].planned + 'T17:00:00');
+                item.recipe = temp[i].recipe;
+
+                const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
+                array.push(copy);
+              } else if (temp[i].meal == 'Dinner') {
+                item.title = temp[i].title;
+                item.allDay = false;
+                item.start = new Date(temp[i].planned + 'T17:00:00');
+                item.end = new Date(temp[i].planned + 'T22:00:00');
+                item.recipe = temp[i].recipe;
+
+                const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
+                array.push(copy);
+              }
             }
 
             setCurrentCalendarTabInfo(array);
@@ -113,7 +133,7 @@ const CalendarComp = () => {
             today.getFullYear(),
             today.getMonth(),
             today.getDate(),
-            20,
+            23,
           )
         }
         style={{height: 800}}

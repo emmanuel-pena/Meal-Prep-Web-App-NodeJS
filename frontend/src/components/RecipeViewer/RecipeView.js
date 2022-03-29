@@ -26,12 +26,12 @@ import globalContext from '../globalContext';
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const [favoritesResponse, setFavoritesResponse] = useState(null);
-  const {setLoginOpen, setSignupOpen} = React.useContext(globalContext);
 
   const user = useUser();
 
   useEffect(() => {
     setRecipe(recipeProp);
+    console.log(recipeProp);
   }, [recipeProp]);
 
 

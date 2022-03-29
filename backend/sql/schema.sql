@@ -51,8 +51,9 @@ CREATE TABLE grocerys_recipe (
 
 CREATE TABLE calendarRecipes (
       memberId UUID NOT NULL,
+      meal  VARCHAR(60),
       title  VARCHAR(60),
       recipeId INTEGER,
-      plannedDate VARCHAR(15),
-      PRIMARY KEY(memberId, title, recipeId, plannedDate)
+      planned VARCHAR(15),
+      PRIMARY KEY(memberId, meal, title, recipeId, planned)
 );

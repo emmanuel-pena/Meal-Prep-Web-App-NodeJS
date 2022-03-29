@@ -565,16 +565,19 @@ exports.addToMealCalendarTable = async (info, userIdd) => {
   const mealType = info.mealType;
   const recipeId = info.recipeId;
   const recipe = info.RecipeObj;
+  const recipeName = info.RecipeObj.title;
+  console.log('db.js lines 570');
+  console.log(recipeName);
   const date = info.date;
   const plannedDate = date.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
 
   await insertIntoRecipes(recipeId, recipe);
 
-  const select = 'INSERT INTO calendarRecipes(memberId, title, recipeId, plannedDate) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING RETURNING title';
+  const select = 'INSERT INTO calendarRecipes(memberId, meal, title, recipeId, planned) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING RETURNING title';
 
   const query = {
     text: select,
-    values: [memberId, mealType, recipeId, plannedDate],
+    values: [memberId, mealType, recipeName, recipeId, plannedDate],
   };
 
   const { rows } = await pool.query(query);
@@ -593,7 +596,7 @@ exports.addToMealCalendarTable = async (info, userIdd) => {
 exports.getAllFromMealCalendarTable = async (userIdd) => {
   const memberId = userIdd;
 
-  const select = 'SELECT DISTINCT r.info, mr.title, mr.plannedDate FROM calendarRecipes mr, recipe r WHERE mr.recipeId = r.id AND mr.memberID = $1';
+  const select = 'SELECT DISTINCT r.info, mr.meal, mr.title, mr.planned FROM calendarRecipes mr, recipe r WHERE mr.recipeId = r.id AND mr.memberID = $1';
 
   const query = {
     text: select,
@@ -605,16 +608,15 @@ exports.getAllFromMealCalendarTable = async (userIdd) => {
   console.log('db.js rows)');
   console.log(rows);
   let array = [];
-  let item = {title: '', allDay: false, start: '', end: '', recipe: ''};
+  let item = { meal: '', title: '', planned: '', recipe: '' };
 
   for (let i = 0; i < rows.length; i++) {
+    item.meal = rows[i].meal;
     item.title = rows[i].title;
-    item.allDay = false;
-    item.start = rows[i].planneddate;
-    item.end = rows[i].planneddate;
+    item.planned = rows[i].planned;
     item.recipe = rows[i].info;
 
-    const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
+    const copy = { meal: item.meal, title: item.title, planned: item.planned, recipe: item.recipe };
     array.push(copy);
   }
 
