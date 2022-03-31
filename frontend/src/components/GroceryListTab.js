@@ -22,6 +22,9 @@ import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import {useUser} from './providers/UserProvider';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import {useTheme} from '@mui/material/styles';
+
 
 // global context
 import globalContext from './globalContext';
@@ -70,6 +73,21 @@ export default function GroceryList2() {
   const {deletedAList, setDeletedAList} = React.useContext(globalContext);
   const [newList, setNewList] = React.useState('');
   const [addedBlankGroceryList, setAddedBlankGroceryList] = React.useState(false);
+  const [openConfirmation, setOpenConfirmation] = React.useState(false);
+  const [toDelete, setToDelete] = React.useState(null);
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const deleteConfirmation = (key) => {
+    const listToDelete = key;
+    setToDelete(listToDelete);
+    setOpenConfirmation(true);
+  };
+
+  const handleCloseConfirmation = () => {
+    setToDelete(null);
+    setOpenConfirmation(false);
+  };
 
   const user = useUser();
 
@@ -308,7 +326,7 @@ export default function GroceryList2() {
               </StyledDiv2>
 
               <StyledDiv3 variant="contained" onClick={() => {
-                handleClickGarbage(key);
+                deleteConfirmation(key);
               }} style={{backgroundColor: '#F7918C'}}>
                 <DeleteIcon style={{color: 'black'}} />
               </StyledDiv3>
@@ -382,6 +400,30 @@ export default function GroceryList2() {
             }}>Create Grocery List</Button>
           </DialogActions>
         </Dialog>
+      </div>
+
+    <div>
+      <Dialog
+        fullScreen={fullScreen}
+        open={openConfirmation}
+        onClose={handleCloseConfirmation}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <DialogTitle id="responsive-dialog-title" style={{color: '#811010'}}>
+          {'Are you sure you would like to delete this list?'}
+        </DialogTitle>
+          <DialogActions>
+          <Button autoFocus onClick={handleCloseConfirmation}>
+              Cancel
+          </Button>
+            <Button onClick={() => {
+              handleClickGarbage(toDelete);
+              handleCloseConfirmation();
+            }} autoFocus>
+              Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
       </div>
     </div>
   );
