@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import GroceryList from './GroceryList.js';
 import GroceryList2 from './GroceryListTab.js';
-import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
-import { GlobalProvider } from './globalContext';
+import {MuiThemeProvider, createTheme} from '@material-ui/core/styles';
+import {GlobalProvider} from './globalContext';
 import AccountVerification from './AccountVerification.js';
 import Header from './NavBar.js';
 import MyCalendar from './Calendar.js';

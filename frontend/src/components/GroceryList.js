@@ -111,15 +111,13 @@ function GroceryList({recipeResults, setSearched}) {
           },
       ]}]);
 
-  //const [grocRecipes, setGrocRecipes] = useState(['715497', '644387', '638086']);
-  //setGrocRecipes(['716342', '715594']);
+  // const [grocRecipes, setGrocRecipes] = useState(['715497', '644387', '638086']);
+  // setGrocRecipes(['716342', '715594']);
 
-  //fetch('http://localhost:3010/v0/groceryrecipe?groceryListID=123a986c-5a92-4004-9a8d-2d05b609dc81')
+  // fetch('http://localhost:3010/v0/groceryrecipe?groceryListID=123a986c-5a92-4004-9a8d-2d05b609dc81')
    // .then((response) => console.log(response));
-  
-    
 
-  let grocRecipes = []; 
+  const grocRecipes = [];
   const grocArray = [];
 
 
@@ -139,10 +137,12 @@ function GroceryList({recipeResults, setSearched}) {
         headers: new Headers({
           'Authorization': 'Bearer ' + accessToken,
           'Content-Type': 'application/json',
-        })
+        }),
       })
       .then((response) => response.json())
-      .then((data) => data.map((recobj) => {grocRecipes.push(recobj.id.toString())}))
+        .then((data) => data.map((recobj) => {
+          grocRecipes.push(recobj.id.toString());
+        }))
       .then(() => console.log(grocRecipes))
       .then(() =>
       grocRecipes.map((recipeID) => {
@@ -206,7 +206,7 @@ function GroceryList({recipeResults, setSearched}) {
             </Box>
             <TabPanel value={value} index={0}>
             {grocIngredients.map((recipe) => {
-              //console.log(recipe);
+              // console.log(recipe);
               return (
               recipe.extendedIngredients.map((ingredient) => {
                   return (
