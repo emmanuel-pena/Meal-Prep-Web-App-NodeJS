@@ -50,7 +50,7 @@ const CalendarComp = () => {
             const array = [];
 
             for (let i = 0; i < temp.length; i++) {
-              if (temp[i].meal == 'Breakfast') {
+              if (temp[i].meal === 'Breakfast') {
                 item.title = temp[i].title;
                 item.allDay = false;
                 item.start = new Date(temp[i].planned + 'T07:00:00');
@@ -59,7 +59,7 @@ const CalendarComp = () => {
 
                 const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
                 array.push(copy);
-              } else if (temp[i].meal == 'Lunch') {
+              } else if (temp[i].meal === 'Lunch') {
                 item.title = temp[i].title;
                 item.allDay = false;
                 item.start = new Date(temp[i].planned + 'T12:00:00');
@@ -68,7 +68,7 @@ const CalendarComp = () => {
 
                 const copy = {title: item.title, allDay: item.allDay, start: item.start, end: item.end, recipe: item.recipe};
                 array.push(copy);
-              } else if (temp[i].meal == 'Dinner') {
+              } else if (temp[i].meal === 'Dinner') {
                 item.title = temp[i].title;
                 item.allDay = false;
                 item.start = new Date(temp[i].planned + 'T17:00:00');
