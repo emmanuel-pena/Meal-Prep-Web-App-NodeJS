@@ -11,13 +11,14 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {useUser} from './providers/UserProvider';
+import {SnackbarProvider, useSnackbar} from 'notistack';
 
 // global context
 import globalContext from './globalContext';
 
 const ITEM_HEIGHT = 48;
 
-export default function LongMenu(props) {
+function LongMenuTemp(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -26,6 +27,8 @@ export default function LongMenu(props) {
   const {currentGroceryLists, setCurrentGroceryLists} = React.useContext(globalContext);
   const {currentGroceryListTabInfo} = React.useContext(globalContext);
   const {deletedAList} = React.useContext(globalContext);
+
+  const {enqueueSnackbar} = useSnackbar();
 
   const user = useUser();
 
@@ -118,6 +121,7 @@ export default function LongMenu(props) {
         })
         .then((json) => {
           console.log('In final .then of pushToExistingList');
+          enqueueSnackbar('Successfully added recipe to list!', 'success');
           handleChangedCurrrentGroceryList();
           console.log(json);
         })
@@ -128,7 +132,6 @@ export default function LongMenu(props) {
       console.log('console.loggin e');
       console.log(e);
     }
-
     handleClose();
   };
 
@@ -189,6 +192,7 @@ export default function LongMenu(props) {
               .then((jsonn) => {
                 console.log('In final .then pf pushToNewList');
                 handleChangedCurrrentGroceryList();
+                enqueueSnackbar('Successfully added recipe to list!', 'success');
                 console.log(jsonn);
                 const returned = jsonn;
                 console.log(returned);
@@ -299,5 +303,13 @@ export default function LongMenu(props) {
       </div>
 
     </div>
+  );
+}
+
+export default function LongMenu(props) {
+  return (
+    <SnackbarProvider maxSnack={1} style={{backgroundColor: 'green'}}>
+      <LongMenuTemp recipe={props.recipe}/>
+    </SnackbarProvider>
   );
 }
