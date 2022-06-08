@@ -21,7 +21,7 @@ const RecipeViewTabs = ({recipe}) => {
     return (
       instructions.map((instruction, index) => {
         return (
-          <ListItem>
+          <ListItem key={index}>
           <ListItemText
               primary={`${index + 1}. ${instruction}`}
             >
