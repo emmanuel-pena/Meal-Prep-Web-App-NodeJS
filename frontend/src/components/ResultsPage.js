@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
 import {useState} from 'react';
-import {useEffect} from 'react';
 import {Typography, Box, Grid} from '@material-ui/core';
 import {MuiThemeProvider, createTheme} from '@material-ui/core/styles';
 import {Card, CardMedia, CardContent, CardActions} from '@mui/material';

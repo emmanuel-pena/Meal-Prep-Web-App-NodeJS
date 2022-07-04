@@ -133,7 +133,7 @@ function GroceryList({recipeResults, setSearched}) {
 
 
     useEffect(() => {
-      fetch('http://localhost:3010/v0/groceryrecipe?groceryListID=123a986c-5a92-4004-9a8d-2d05b609dc81', {
+      fetch('https://mealprephelper.herokuapp.com/groceryrecipe?groceryListID=123a986c-5a92-4004-9a8d-2d05b609dc81', {
         headers: new Headers({
           'Authorization': 'Bearer ' + accessToken,
           'Content-Type': 'application/json',

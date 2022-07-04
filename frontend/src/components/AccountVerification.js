@@ -16,7 +16,7 @@ const AccountVerification = () => {
   const registrationToken = params.get('token');
 
   useEffect(() => {
-    fetch('http://localhost:3010/verify', {
+    fetch('https://mealprephelper.herokuapp.com/verify', {
         method: 'POST',
         body: JSON.stringify({token: registrationToken}),
         headers: {

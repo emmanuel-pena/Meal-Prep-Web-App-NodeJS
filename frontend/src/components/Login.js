@@ -65,7 +65,7 @@ const LoginForm = () => {
 
   const handleGoogleSuccess = (googleData) => {
     try {
-      fetch('http://localhost:3010/google-login', {
+      fetch('https://mealprephelper.herokuapp.com/google-login', {
         method: 'POST',
         body: JSON.stringify({
           token: googleData.tokenId,
@@ -126,7 +126,7 @@ const LoginForm = () => {
         console.log(body);
       }
 
-      fetch('http://localhost:3010/login', {
+      fetch('https://mealprephelper.herokuapp.com/login', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
