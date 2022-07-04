@@ -8,9 +8,12 @@
   "scripts": {
     "install-backend": "cd backend && npm install",
     "install-frontend": "cd frontend && npm install",
+    "build": "react-scripts build",
     "start-backend": "cd backend && npm start",
     "start-frontend": "cd frontend && npm start",
-    "install-e2e": "cd e2e && npm install",
-    "postinstall": "(npm run install-backend) && (npm run install-frontend) && (npm run install-e2e)"
+    "postinstall": "(npm run install-backend) && (npm run install-frontend)"
+  },
+  "dependencies": {
+    "react-scripts": "^5.0.1"
   }
 }
