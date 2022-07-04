@@ -42,7 +42,9 @@ exports.sendMail = async (email, subject, emailContent) => {
     };
 
     await transport.sendMail(mailOptions);
+    console.log('email sent');
   } catch (error) {
+    console.log(error);
     return error;
   }
 };
