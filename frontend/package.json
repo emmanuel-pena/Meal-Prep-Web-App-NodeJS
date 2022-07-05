@@ -40,7 +40,7 @@
     "msw": "*",
     "puppeteer": "*",
     "puppeteer-core": "*",
-    "react-scripts": "*",
+    "react-scripts": "^5.0.1",
     "typescript": "4.7.4"
   },
   "scripts": {
