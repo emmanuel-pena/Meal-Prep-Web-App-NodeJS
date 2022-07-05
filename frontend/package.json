@@ -1,6 +1,9 @@
 {
   "name": "recipe_prep-frontend",
-  "version": "16.3.2",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "Project for CSE 115A",
   "author": "Tyler Hayden, Adam Barsness, Emmanuel Pena, Shane Smith, Joshua Harding ",
   "license": "UNLICENSED",
