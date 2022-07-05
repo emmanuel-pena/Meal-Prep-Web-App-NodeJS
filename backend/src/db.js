@@ -2,11 +2,11 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: 'localhost',
+  host: 'ec2-34-194-73-236.compute-1.amazonaws.com',
   port: 5432,
-  database: process.env.POSTGRES_DB,
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
+  database: 'd19le3rr37lphv',
+  user: 'pjxfiistpvaczx',
+  password: 'ea2e812dce206e6e34595ed8e62a14025b33b71e10c1a54ecc1c655c35ef875d',
 });
 
 exports.userExists = async (userInfo) => {
