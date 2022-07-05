@@ -105,7 +105,7 @@ export default function GroceryList2() {
           const accessToken = user.accessToken;
           console.log(accessToken);
 
-          await fetch('https://mealprephelper.herokuapp.com/recipesandlistnames', {
+          await fetch('https://mealprephelper-backend.herokuapp.com/recipesandlistnames', {
             headers: new Headers({
               'Authorization': 'Bearer ' + accessToken,
             }),

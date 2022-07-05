@@ -67,7 +67,7 @@ const SignupForm = () => {
         const body = {username: param1, email: param2, password: param3};
         console.log(body);
 
-      fetch('https://mealprephelper.herokuapp.com/user', {
+      fetch('https://mealprephelper-backend.herokuapp.com/user', {
           method: 'POST',
           body: JSON.stringify(body),
           headers: {

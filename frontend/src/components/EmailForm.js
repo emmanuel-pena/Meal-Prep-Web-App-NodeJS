@@ -47,7 +47,7 @@ const EmailForm = ({title, endpoint}) => {
       return;
     }
     setIsSuccessful('wait');
-    fetch(`https://mealprephelper.herokuapp.com/${endpoint}`, {
+    fetch(`https://mealprephelper-backend.herokuapp.com/${endpoint}`, {
       method: 'POST',
       body: JSON.stringify({email: email}),
       headers: {

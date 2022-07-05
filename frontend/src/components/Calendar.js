@@ -31,7 +31,7 @@ const CalendarComp = () => {
         const accessToken = user.accessToken;
         console.log(accessToken);
 
-        fetch('https://mealprephelper.herokuapp.com/calendarrecipe', {
+        fetch('https://mealprephelper-backend.herokuapp.com/calendarrecipe', {
           headers: new Headers({
             'Authorization': 'Bearer ' + accessToken,
           }),

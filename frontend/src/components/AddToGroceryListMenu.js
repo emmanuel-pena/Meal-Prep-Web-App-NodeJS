@@ -65,7 +65,7 @@ function LongMenuTemp(props) {
     try {
       const accessToken = user.accessToken;
       console.log('getting gl');
-      fetch('https://mealprephelper.herokuapp.com/grocerylists', {
+      fetch('https://mealprephelper-backend.herokuapp.com/grocerylists', {
         headers: new Headers({
           'Authorization': 'Bearer ' + accessToken,
         }),
@@ -105,7 +105,7 @@ function LongMenuTemp(props) {
       const body = {listName: param1, recipeId: param2, RecipeObj: param3};
       console.log(body);
 
-      fetch('https://mealprephelper.herokuapp.com/groceryrecipeexisting', {
+      fetch('https://mealprephelper-backend.herokuapp.com/groceryrecipeexisting', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: new Headers({
@@ -151,7 +151,7 @@ function LongMenuTemp(props) {
       console.log(listNameToAdd);
       const body = {listName: listNameToAdd};
 
-      fetch('https://mealprephelper.herokuapp.com/grocerylists', {
+      fetch('https://mealprephelper-backend.herokuapp.com/grocerylists', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: new Headers({
@@ -175,7 +175,7 @@ function LongMenuTemp(props) {
             const body = {groceryListId: param1, recipeId: param2, RecipeObj: param3};
             console.log(body);
 
-            fetch('https://mealprephelper.herokuapp.com/groceryrecipe', {
+            fetch('https://mealprephelper-backend.herokuapp.com/groceryrecipe', {
               method: 'POST',
               body: JSON.stringify(body),
               headers: new Headers({
