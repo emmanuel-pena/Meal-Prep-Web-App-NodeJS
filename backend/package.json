@@ -28,7 +28,9 @@
     "jsonwebtoken": "*",
     "nodemailer": "^6.7.2",
     "pg": "*",
-    "swagger-ui-express": "*"
+    "react-scripts": "^5.0.1",
+    "swagger-ui-express": "*",
+    "http-server": "^0.12.3"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -55,6 +57,7 @@
   },
   "scripts": {
     "start": "nodemon src/server.js",
+    "build": "react-scripts build",
     "test": "jest --runInBand --coverage --verbose --forceExit",
     "lint": "./node_modules/.bin/eslint . --ext .js"
   }

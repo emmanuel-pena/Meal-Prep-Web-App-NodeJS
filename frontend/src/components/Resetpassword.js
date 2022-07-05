@@ -36,7 +36,7 @@ const handleSubmit = () => {
     setPasswordConfirm('');
     return;
   }
-  fetch(`http://localhost:3010/resetPassword`, {
+  fetch(`https://mealprephelper.herokuapp.com/resetPassword`, {
     method: 'POST',
     body: JSON.stringify({password: password, token: resetToken}),
     headers: {

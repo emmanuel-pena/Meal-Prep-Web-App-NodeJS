@@ -35,7 +35,7 @@ exports.createUser = async (req, res) => {
   const info = req.body;
 
   if (await db.userExists(info)) {
-    res.status(409).end();
+    res.status(409).send();
   } else {
     const passwordHash = await bcrypt.hash(info.password, saltRounds);
     info.password = passwordHash;
@@ -89,7 +89,7 @@ exports.authenticateUser = async (req, res) => {
       res.status(200).json(response);
     }
   } else {
-    res.status(401).end();
+    res.status(401).send();
   }
 };
 
@@ -97,7 +97,7 @@ exports.emailVerification = async (req, res) => {
   const info = { email: req.email };
   const user = await db.userExists(info);
   if (user[0]['is_activated']) {
-    res.status(409).end();
+    res.status(409).send();
   } else {
     const result = await db.updateUserActivation(user[0].id);
     const response = {
@@ -118,7 +118,7 @@ exports.resendVerification = async (req, res) => {
     await sendMail(user[0].email, emailObject.subject, emailObject.content);
     res.status(200).json(user[0].email);
   } else {
-    res.status(404).end();
+    res.status(404).send();
   }
 };
 
@@ -135,7 +135,7 @@ exports.sendResetPassword = async (req, res) => {
     await sendMail(user[0].email, emailObject.subject, emailObject.content);
     res.status(200).json(user[0].email);
   } else {
-    res.status(404).end();
+    res.status(404).send();
   }
 };
 
@@ -149,10 +149,10 @@ exports.resetPassword = async (req, res) => {
       const result = await db.updatePassword(user[0].id, passwordHash);
       res.status(200).json({ email: result.email, username: result.username });
     } else {
-      res.status(403).end();
+      res.status(403).send();
     }
   } else {
-    res.status(404).end();
+    res.status(404).send();
   }
 };
 
