@@ -5,8 +5,8 @@ DROP TABLE IF EXISTS grocery_list CASCADE;
 DROP TABLE IF EXISTS favorite_recipes CASCADE;
 DROP TABLE IF EXISTS recipe CASCADE;
 DROP TABLE IF EXISTS member CASCADE;
+DROP TABLE IF EXISTS calendarRecipes CASCADE;
 DROP TYPE IF EXISTS accountType;
-DROP TYPE IF EXISTS calendarRecipes;
 
 CREATE TYPE accountType AS ENUM ('native', 'google');
 CREATE TABLE member ( 
