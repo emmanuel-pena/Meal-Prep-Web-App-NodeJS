@@ -113,7 +113,7 @@ export default function LongMenuCal(props) {
         const body = {mealType: param1, recipeId: param2, RecipeObj: param3, date: param4};
         console.log(body);
 
-      fetch('https://mealprephelper-backend.herokuapp.com/calendarrecipe', {
+      fetch('http://localhost:3010/calendarrecipe', {
           method: 'POST',
           body: JSON.stringify(body),
           headers: new Headers({

@@ -3,8 +3,6 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import {GoogleLogin} from 'react-google-login';
-import GoogleButton from 'react-google-button';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
@@ -13,6 +11,8 @@ import InputLabel from '@mui/material/InputLabel';
 import {TopDialogTitle, BottomDialogContentText, StyledFilledInput} from './Login.styles';
 import {useUserUpdate} from './providers/UserProvider';
 import {useNavigate} from 'react-router-dom';
+import {GoogleLogin} from '@react-oauth/google';
+import jwt_decode from 'jwt-decode';
 
 // global context
 import globalContext from './globalContext';
@@ -48,6 +48,7 @@ const LoginForm = () => {
     handleClose();
   };
 
+
   const handleClickShowPassword = () => {
     setValues({
       ...values,
@@ -65,10 +66,12 @@ const LoginForm = () => {
 
   const handleGoogleSuccess = (googleData) => {
     try {
-      fetch('https://mealprephelper-backend.herokuapp.com/google-login', {
+      fetch('http://localhost:3010/google-login', {
         method: 'POST',
         body: JSON.stringify({
-          token: googleData.tokenId,
+          name: googleData.name,
+          email: googleData.email,
+          picture: googleData.picture,
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -101,10 +104,6 @@ const LoginForm = () => {
     handleClose();
   };
 
-  const handleGoogleError = (result) => {
-
-  };
-
   const loginUser = () => {
     try {
       setLoginResponse(null);
@@ -126,7 +125,7 @@ const LoginForm = () => {
         console.log(body);
       }
 
-      fetch('https://mealprephelper-backend.herokuapp.com/login', {
+      fetch('http://localhost:3010/login', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
@@ -249,21 +248,16 @@ const LoginForm = () => {
             } />
           <div>&nbsp;</div>
           <GoogleLogin
-            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-            buttonText='Sign in with Google'
-            onSuccess={handleGoogleSuccess}
-            onFailure={handleGoogleError}
-            cookiePolicy={'single_host_origin'}
-            render={(renderProps) => (
-              <GoogleButton
-                onClick={renderProps.onClick}
-                style={{width: 208}}
-              >
-                Sign In with Google
-              </GoogleButton>
-            )}
+            style={{width: 240}}
+            onSuccess={(credentialResponse) => {
+              handleGoogleSuccess(jwt_decode(credentialResponse.credential));
+            }}
 
-          />
+            onError={() => {
+              alert('Login Failed!');
+            }}
+            />
+
           <div>&nbsp;</div>
           {invalidLogin(loginResponse)}
         </DialogContent>

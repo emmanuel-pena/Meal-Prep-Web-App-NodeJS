@@ -105,7 +105,7 @@ export default function GroceryList2() {
           const accessToken = user.accessToken;
           console.log(accessToken);
 
-          await fetch('https://mealprephelper-backend.herokuapp.com/recipesandlistnames', {
+          await fetch('http://localhost:3010/recipesandlistnames', {
             headers: new Headers({
               'Authorization': 'Bearer ' + accessToken,
             }),
@@ -162,7 +162,7 @@ export default function GroceryList2() {
       const param = key;
       console.log(param);
 
-      await fetch(`https://mealprephelper.herokuapp.com/grocerylists?listName=${param}`, {
+      await fetch(`http://localhost:3010/grocerylists?listName=${param}`, {
         method: 'DELETE',
         headers: new Headers({
           'Authorization': 'Bearer ' + accessToken,
@@ -194,7 +194,7 @@ export default function GroceryList2() {
     try {
       const accessToken = user.accessToken;
       console.log('getting gl');
-      fetch('https://mealprephelper.herokuapp.com/grocerylists', {
+      fetch('http://localhost:3010/grocerylists', {
         headers: new Headers({
           'Authorization': 'Bearer ' + accessToken,
         }),
@@ -240,7 +240,7 @@ export default function GroceryList2() {
       console.log(listNameToAdd);
       const body = {listName: listNameToAdd};
 
-      fetch('https://mealprephelper.herokuapp.com/grocerylists', {
+      fetch('http://localhost:3010/grocerylists', {
         method: 'POST',
         body: JSON.stringify(body),
         headers: new Headers({
@@ -271,7 +271,7 @@ export default function GroceryList2() {
             const body = {groceryListId: param1, recipeId: param2, RecipeObj: param3};
             console.log(body);
 
-            fetch('https://mealprephelper.herokuapp.com/groceryrecipe', {
+            fetch('http://localhost:3010/groceryrecipe', {
               method: 'POST',
               body: JSON.stringify(body),
               headers: new Headers({

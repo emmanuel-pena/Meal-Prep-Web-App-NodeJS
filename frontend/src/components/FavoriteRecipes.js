@@ -6,7 +6,7 @@ const FavoriteRecipes = () => {
   const [favorites, setFavorites] = useState({});
   const user = useUser();
   useEffect(() => {
-    fetch('https://https://mealprephelper-backend.herokuapp.com/favoriterecipe', {
+    fetch('http://localhost:3010/favoriterecipe', {
          method: 'GET',
          headers: new Headers({
            'Authorization': 'Bearer ' + user.accessToken,

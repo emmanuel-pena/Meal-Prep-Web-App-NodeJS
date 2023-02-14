@@ -59,16 +59,12 @@ exports.checkResetPasswordToken = (req, res, next) => {
 
 exports.googleAuth = async (req, res) => {
   try {
-    const {token} = req.body;
-    const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: process.env.CLIENT_ID,
-    });
+    const info = req.body;
 
-    console.log(ticket);
-    const secrets = secret.accessToken;
+    const name = info.name;
+    const email = info.email;
+    const picture = info.picture;
 
-    const {name, email, picture} = ticket.getPayload();
 
     await db.upsertGoogleUser(email);
     const id = await db.getUserId(email);

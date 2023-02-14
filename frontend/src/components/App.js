@@ -11,6 +11,7 @@ import EmailForm from './EmailForm';
 import Resetpassword from './Resetpassword.js';
 import UserProvider from './providers/UserProvider';
 import Home from './Home';
+import {GoogleOAuthProvider} from '@react-oauth/google';
 
 /**
  * Simple component with no state.
@@ -40,6 +41,7 @@ function App() {
   const [changedCalendar, setChangedCalendar] = React.useState(false);
 
   return (
+    <GoogleOAuthProvider clientId='1054759242489-2s5rdkq3vh2dajfne2pnh8v2bp63bqfh.apps.googleusercontent.com'>
     <MuiThemeProvider theme={theme}>
       <BrowserRouter>
         <UserProvider>
@@ -98,7 +100,8 @@ function App() {
           </GlobalProvider>
         </UserProvider>
       </BrowserRouter>
-    </MuiThemeProvider>
+      </MuiThemeProvider>
+    </GoogleOAuthProvider>
   );
 }
 
